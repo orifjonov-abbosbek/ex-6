@@ -1,0 +1,63 @@
+.wrapper {
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+
+  .kurs_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    .plus {
+      font-size: 35px;
+      color: blue;
+    }
+  }
+
+  .edit_btn {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    background-color: orange;
+    border: transparent;
+
+    &:hover {
+      width: 40px;
+      height: 40px;
+      font-size: 25px;
+      border: 2px solid #ccc;
+      transition: all 0.1s ease-in;
+    }
+  }
+
+  .table_box {
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+  }
+
+  .table {
+    border: 1px solid #ccc;
+  }
+
+  .td {
+    padding: 0 5px;
+    text-align: center;
+  }
+
+  .tr {
+    &:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+  }
+}
