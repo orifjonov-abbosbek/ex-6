@@ -147,7 +147,7 @@ const Layout = () => {
                     <img
                       className="w-[591px] h-[769px]"
                       src={hacker}
-                      alt="hackerImg"
+                      alt="tolibon"
                     />
                     <img src={reactLogo} alt="logo" />
                     <img src={vue} alt="logo" />
@@ -190,7 +190,7 @@ const Layout = () => {
                     onClick={() => props.setOpenModal("form-elements")}
                   >
                     <div>
-                      <img src={item.image} alt="card-image" />
+                      <img className='w-[400px] h-[300px] object-cover' src={item.image} alt="card-image" />
                     </div>
                     <div className="card_body">
                       <div className="st-counter">
