@@ -420,7 +420,7 @@ const Layout = () => {
 
         <section id="services">
           <div className="container">
-            <div className="all">
+            <div className="service_wrapper">
               <div className="engtepa">
                 <img src={Ellipse} alt="ellipse" className="ellipse" />
                 <div className="tepatexts">

@@ -1,0 +1,17 @@
+.customers_wrapper {
+  padding: 1rem;
+  width: 100%;
+
+  .c_header {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    h2 {
+      font-weight: 700;
+      font-size: 25px;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

@@ -1,9 +1,7 @@
-.wrapper {
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px;
+.services_wrapper {
+  padding: 1rem;
 
-  .kurs_head {
+  .service_header {
 
     display: flex;
     align-items: center;
@@ -36,6 +34,13 @@
     }
   }
 
+  .s_table {
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+  }
+
   .edit_btn {
     width: 30px;
     height: 30px;
@@ -47,17 +52,15 @@
     border: transparent;
 
     &:hover {
-          opacity: 0.7;
+      width: 40px;
+      height: 40px;
+      font-size: 25px;
+      border: 2px solid #ccc;
+      transition: all 0.1s ease-in;
     }
   }
 
-  .table_box {
-    padding: 1rem;
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 10px;
-  }
-
+ 
 
   .tr {
     &:nth-child(odd) {

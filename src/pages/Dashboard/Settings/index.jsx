@@ -11,7 +11,7 @@ const Settings = () => {
     <Header />
     
 
-      <div className="  mt-[50px] bg-gray-300 mx-auto  shadow-2xl rounded-xl overflow-hidden">
+      <div className="  mt-[50px] bg-gray-300 mx-auto  shadow-3xl rounded-xl overflow-hidden">
         <div className="wrapper  ">
           <div className="bg-white mb-[20px] px-[50px] rounded-lg mt-[20px]">
             <h2 className="text-blue-900 font-semibold text-[22px]">
@@ -27,7 +27,7 @@ const Settings = () => {
 
           <form
             action=""
-            className="px-[50px]  bg-white border-b-2 border-gray-300 py-[50px]"
+            className="px-[50px] rounded-xl  bg-white border-b-2 border-gray-300 py-[50px]"
           >
             <label htmlFor="">
               <p className=" mb-[10px] text-[20px] font-semibold text-blue-900">

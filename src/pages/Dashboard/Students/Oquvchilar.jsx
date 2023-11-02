@@ -35,16 +35,19 @@ const Oquvchilar = () => {
     <>
       <div className="students_wrapper">
         <div className="s_header">
-          <h2>O'quvchilar</h2>
-          <Breadcrumb
-            aria-label="Default breadcrumb example"
-            className="text-blue-500"
-          >
-            <Breadcrumb.Item href="/dashboard/main">
-              <p>Bosh sahifa</p>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item href="#">O'quvchilar</Breadcrumb.Item>
-          </Breadcrumb>
+          <div className="">
+            <h2>O'quvchilar</h2>
+            <Breadcrumb
+              aria-label="Default breadcrumb example"
+              className="text-blue-500"
+            >
+              <Breadcrumb.Item href="/dashboard/main">
+                <p>Bosh sahifa</p>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item href="#">O'quvchilar</Breadcrumb.Item>
+            </Breadcrumb>
+          </div>
+        
         </div>
 
         <div className="table_wrapper">
@@ -62,7 +65,7 @@ const Oquvchilar = () => {
               {students.map((student, index) => (
                 <Table.Row
                   key={index}
-                  className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                  className="tr bg-white dark:border-gray-700 dark:bg-gray-800"
                 >
                   <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                     {index + 1}

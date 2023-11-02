@@ -48,4 +48,9 @@
     padding: 0;
     padding-left: 50px;
   }
+  .tr {
+    &:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+  }
 }

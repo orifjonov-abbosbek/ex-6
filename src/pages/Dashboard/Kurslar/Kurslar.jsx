@@ -3,17 +3,18 @@ import postAPI from "../../../server/post/index.js";
 import { AiFillPlusSquare } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import { Table } from "flowbite-react";
+import { Breadcrumb } from "flowbite-react";
 import AddCourseModal from "../../../components/CourseModal/CourseModal";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 import "./style.scss";
 
 const Kurslar = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isAddingCourse, setIsAddingCourse] = useState(false);
-
   const [openModal, setOpenModal] = useState(false);
-
   const [courseName, setCourseName] = useState("");
   const [courseDescription, setCourseDescription] = useState("");
   const [courseImage, setCourseImage] = useState(null);
@@ -26,15 +27,18 @@ const Kurslar = () => {
 
   const sendCourseDataToAPI = (newCourse) => {
     console.log("Sending data to API:", newCourse);
-    postAPI.createCourse(newCourse)
-      .then(response => {
+    postAPI
+      .createCourse(newCourse)
+      .then((response) => {
         if (response.status === 201) {
           console.log("Course created successfully");
+          toast.success("Course created successfully");
         } else {
           console.error("Error creating a course:", response.data);
+          toast.error("Error creating a course"); 
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error creating a course:", error);
       });
   };
@@ -61,12 +65,24 @@ const Kurslar = () => {
   return (
     <div className="wrapper">
       <div className="kurs_head">
-        <h2>Kurslar</h2>
         <div className="">
-          <AiFillPlusSquare
-            onClick={() => setOpenModal(true)}
-            className="plus"
-          />
+          <h2 className="font-semibold text-2xl mb-3">Kurslar</h2>
+
+          <Breadcrumb
+            aria-label="Default breadcrumb example"
+            className="text-blue-500"
+          >
+            <Breadcrumb.Item href="/dashboard/main">
+              <p>Bosh sahifa</p>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item href="#">Kurslar</Breadcrumb.Item>
+          </Breadcrumb>
+        </div>
+
+        <div className="">
+          <div className="serviceAdd_btn">
+            <button onClick={() => setOpenModal(true)}>+</button>
+          </div>
         </div>
       </div>
       <div className="table_box">

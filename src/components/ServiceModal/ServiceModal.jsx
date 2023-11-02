@@ -2,10 +2,26 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { AiOutlineClose } from "react-icons/ai";
 
-const AddCourseModal = ({ isOpen, onRequestClose, onCreateCourse }) => {
-  const [courseName, setCourseName] = useState("");
-  const [courseDescription, setCourseDescription] = useState("");
-  const [courseImage, setCourseImage] = useState(null);
+const ServiceModal = ({ isOpen, onRequestClose, onCreateService }) => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
+  const handleCreateService = () => {
+    const newService = {
+      title,
+      description,
+      image,
+    };
+
+    onCreateService(newService);
+    onRequestClose(); // Close the modal after creating the service
+  };
 
   const customModalStyles = {
     content: {
@@ -26,32 +42,16 @@ const AddCourseModal = ({ isOpen, onRequestClose, onCreateCourse }) => {
     },
   };
 
-  const handleCreateCourse = () => {
-    const newCourse = {
-      title: courseName,
-      description: courseDescription,
-      image: courseImage,
-    };
-
-    console.log("New Course Data:", newCourse);
-
-    onCreateCourse(newCourse);
-
-    setCourseName("");
-    setCourseDescription("");
-    setCourseImage(null);
-  };
-
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      contentLabel="Add Course Modal"
+      contentLabel="Add Service Modal"
       style={customModalStyles}
     >
       <div className="mb-[20px] pb-2 flex items-center justify-between border-b">
         <h3 className="text-xl text-blue-900 text-[20px] font-semibold dark:text-white">
-          Kurs qoshish
+          Xizmat qoshish
         </h3>
 
         <AiOutlineClose onClick={onRequestClose} />
@@ -60,44 +60,42 @@ const AddCourseModal = ({ isOpen, onRequestClose, onCreateCourse }) => {
       <div>
         <div className="mb-4">
           <div className="text-xl mb-3 text-blue-900 text-[20px] font-semibold dark:text-white">
-            <label>Kurs rasmi</label>
+            <label>Xizmat rasmi</label>
           </div>
           <input
             className="w-full border border-gray-400 rounded bg-white"
             type="file"
-            onChange={(e) => setCourseImage(e.target.files[0])}
+            onChange={handleImageChange}
           />
         </div>
         <div className="mb-5">
           <label className="text-xl mb-3 text-blue-900 text-[20px] font-semibold dark:text-white">
-            Kurs nomi
+            Xizmat nomi
           </label>
         </div>
         <input
           type="text"
-          value={courseName}
           className="w-full rounded mb-5"
-          placeholder="Kurs nomi"
-          onChange={(e) => setCourseName(e.target.value)}
+          placeholder="Xizmat nomi"
+          onChange={(e) => setTitle(e.target.value)}
         />
       </div>
       <div>
         <div className="">
           <label className="text-xl mb-3 text-blue-900 text-[20px] font-semibold dark:text-white">
-            Kurs haqida
+            Xizmat haqida
           </label>
         </div>
         <textarea
           type="text"
           className="w-full rounded"
-          value={courseDescription}
-          placeholder="Kurs haqida"
-          onChange={(e) => setCourseDescription(e.target.value)}
+          placeholder="Xizmat haqida"
+          onChange={(e) => setDescription(e.target.value)}
         />
       </div>
       <button
         className="bg-[#155e75] text-white rounded px-4 py-2 mt-5"
-        onClick={handleCreateCourse}
+        onClick={handleCreateService}
       >
         +
       </button>
@@ -105,4 +103,4 @@ const AddCourseModal = ({ isOpen, onRequestClose, onCreateCourse }) => {
   );
 };
 
-export default AddCourseModal;
+export default ServiceModal;

@@ -19,11 +19,10 @@ const Dashboard = () => {
 
   return (
     <div className="ssss">
-  
       <Header />
 
-      <div className="down">
-        <div className="sidebar">
+      <div className="dashboard_wrapper">
+        <div className="sidebar ">
           <ul>
             <li>
               <Link
@@ -63,7 +62,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-                to="/dashboard/buyurtmachilar"
+                to="/dashboard/customers"
                 className={`nav__link ${
                   activeItem === "buyurtmachilar" ? "active" : ""
                 }`}
@@ -75,7 +74,7 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-                to="/dashboard/xizmatlar"
+                to="/dashboard/services"
                 className={`nav__link ${
                   activeItem === "xizmatlar" ? "active" : ""
                 }`}
@@ -88,7 +87,7 @@ const Dashboard = () => {
           </ul>
         </div>
 
-        <main className="bg-transparent mt-0 w-full">
+        <main className="bg-transparent dashboard-content">
           <div className="outlet ">
             <Outlet />
           </div>
