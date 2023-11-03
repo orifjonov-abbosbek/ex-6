@@ -104,7 +104,7 @@ const DashHome = () => {
             <h3>O'qiydiganlar</h3>
 
             <div className="flex items-center justify-between">
-              <p>1</p>
+              <p>{students.length}</p>
 
               <p>
                 <FaCheckDouble />
@@ -115,7 +115,7 @@ const DashHome = () => {
             <h3>O'qimaydiganlar</h3>
 
             <div className="flex items-center justify-between">
-              <p>1</p>
+              <p>0</p>
 
               <p>
                 <AiOutlineStop />
@@ -146,10 +146,10 @@ const DashHome = () => {
           </li>
 
           <li>
-            <h3>Xizmatlar</h3>
+            <h3>Kurslar</h3>
 
             <div className="flex items-center justify-between">
-              <p>1</p>
+              <p>{courses.length}</p>
 
               <p>
                 <FaBook />

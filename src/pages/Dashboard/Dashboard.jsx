@@ -4,25 +4,33 @@ import { FcMenu } from "react-icons/fc";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { Dropdown } from "flowbite-react";
 import { HiCog, HiLogout } from "react-icons/hi";
-import Header from '../../components/Header/Header'
+import Header from "../../components/Header/Header";
 import "boxicons";
 import "./style.scss";
 
 const Dashboard = () => {
   const [activeItem, setActiveItem] = useState("dashboard");
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
 
   const handleSidebarItemClick = (item) => {
     setActiveItem(item);
   };
 
-
-
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
   return (
-    <div className="ssss">
-      <Header />
+    <div
+      className={`ssss ${isSidebarOpen ? "sidebar-open" : "sidebar-closed"}`}
+    >
+      <Header onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
 
       <div className="dashboard_wrapper">
-        <div className="sidebar ">
+        <div
+          className={`sidebar ${
+            isSidebarOpen ? "sidebar-open" : "sidebar-closed"
+          }`}
+        >
           <ul>
             <li>
               <Link
@@ -87,7 +95,11 @@ const Dashboard = () => {
           </ul>
         </div>
 
-        <main className="bg-transparent dashboard-content">
+        <main
+          className={`bg-transparent dashboard-content ${
+            isSidebarOpen ? "" : "sidebar-closed"
+          }`}
+        >
           <div className="outlet ">
             <Outlet />
           </div>

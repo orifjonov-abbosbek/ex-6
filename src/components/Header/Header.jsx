@@ -7,10 +7,10 @@ import { HiCog, HiLogout } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ onToggleSidebar, isSidebarOpen }) => {
   const location = useLocation();
 
- const  navigate = useNavigate();
+  const navigate = useNavigate();
 
   const Name = localStorage.getItem("fullName");
 
@@ -28,7 +28,10 @@ const Header = () => {
       <header className="flex items-center justify-between h-[80px] px-[50px] head">
         <a href="#">Logo</a>
         <div className="flex items-center gap-[10px]">
-          <FcMenu className="text-[25px]" />
+          <button onClick={onToggleSidebar}>
+            <FcMenu className="text-[25px]" />
+          </button>
+
           <BiSolidUserCircle className="text-[30px]" />
           <p className="text-blue-600"></p>
           <Dropdown label={Name} dismissOnClick={false}>
