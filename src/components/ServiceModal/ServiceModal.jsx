@@ -53,8 +53,12 @@ const ServiceModal = ({ isOpen, onRequestClose, onCreateService }) => {
         <h3 className="text-xl text-blue-900 text-[20px] font-semibold dark:text-white">
           Xizmat qoshish
         </h3>
-
-        <AiOutlineClose onClick={onRequestClose} />
+        <AiOutlineClose
+          onClick={() => {
+            console.log("Close button clicked");
+            onRequestClose();
+          }}
+        />
       </div>
 
       <div>

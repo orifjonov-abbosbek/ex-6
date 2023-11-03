@@ -29,8 +29,7 @@ import Learn from "./../../assets/icons/Learn";
 import Graduate from "./../../assets/icons/Graduate";
 import Work from "./../../assets/icons/Work";
 import rasm from "../../assets/images/shape.svg";
-import { Button, Label, Modal, TextInput } from "flowbite-react";
-
+import LayoutModal from "../../components/LayoutModal/LayoutModal";
 import "../../index.scss";
 
 const Layout = () => {
@@ -51,8 +50,8 @@ const Layout = () => {
   };
   const [courses, setCourses] = useState([]);
   const [service, setServices] = useState([]);
-  const [openModal, setOpenModal] = useState();
-  const props = { openModal, setOpenModal };
+  const [openModal, setIsOpenModal] = useState(false);
+  const props = { openModal, setIsOpenModal };
 
   const fetchCourses = async () => {
     try {
@@ -187,10 +186,14 @@ const Layout = () => {
                   <li
                     key={item._id}
                     data={item._id}
-                    onClick={() => props.setOpenModal("form-elements")}
+                    onClick={() => setIsOpenModal(true)}
                   >
                     <div>
-                      <img className='w-[400px] h-[300px] object-cover' src={item.image} alt="card-image" />
+                      <img
+                        className="w-[400px] h-[300px] object-cover"
+                        src={item.image}
+                        alt="card-image"
+                      />
                     </div>
                     <div className="card_body">
                       <div className="st-counter">
@@ -212,74 +215,10 @@ const Layout = () => {
             </div>
           </div>
           <div>
-            <Modal
-              show={props.openModal === "form-elements"}
-              size="4xl"
-              popup
-              onClose={() => props.setOpenModal(undefined)}
-            >
-              <Modal.Body>
-                <div className="space-y-6">
-                  <div className="mt-[20px] flex items-center justify-between  border-b">
-                    <div className="flex items-center gap-x-5">
-                      <button className="text-[20px] text-blue-900 font-bold duration-200   active:bg-blue-700  active:text-white py-3 px-6  active:rounded-xl ">
-                        Xizmatlar
-                      </button>
-                      <button className="text-[20px] text-blue-900 font-bold duration-200   active:bg-blue-700  active:text-white py-3 px-6  active:rounded-xl ">
-                        Kurslar
-                      </button>
-                    </div>
-                    <Modal.Header />
-                  </div>
-                  <div>
-                    <div className="mb-2 block">
-                      <Label
-                        HtmlFor="ism"
-                        className="text-blue-800 text-[20px] font-bold"
-                        value="Ism familiya sharifingiz"
-                      />
-                    </div>
-                    <TextInput id="text" placeholder="F.I.SH" required />
-                  </div>
-                  <div>
-                    <div className="mb-2 block">
-                      <Label
-                        HtmlFor="tel"
-                        className="text-blue-800 text-[20px] font-bold"
-                        value="Telefon raqamingiz"
-                      />
-                    </div>
-                    <TextInput id="number" placeholder="901234567" required />
-                  </div>
-                  <div>
-                    <div className="mb-2 block">
-                      <Label
-                        HtmlFor="text"
-                        className="text-blue-800 text-[20px] font-bold"
-                        value="Xizmatni tanlang"
-                      />
-                    </div>
-                    <select className="w-full border-gray-800 opacity-70 text-[20px]  py-3 px-5 mt-[10px] rounded-lg">
-                      <option selected value="Select">
-                        Select...
-                      </option>
-                      <option value="nimadur">nimadur</option>
-                      <option value="nimadur">nimadur</option>
-                      <option value="nimadur">nimadur</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <Button
-                      gradientMonochrome="info"
-                      onClick={() => props.setOpenModal(undefined)}
-                    >
-                      Jo'natish
-                    </Button>
-                  </div>
-                </div>
-              </Modal.Body>
-            </Modal>
+            <LayoutModal
+              isOpen={openModal}
+              onRequestClose={() => setIsOpenModal(false)}
+            />
           </div>
         </section>
 
@@ -430,10 +369,7 @@ const Layout = () => {
               </div>
               <div className="service_cards">
                 {service?.map((item) => (
-                  <div
-                    className="card1"
-                    onClick={() => props.setOpenModal("form-elements")}
-                  >
+                  <div className="card1" onClick={() => setIsOpenModal(true)}>
                     <img
                       src={`${"http://api.webhub.uz" + item.image}`}
                       alt="image"

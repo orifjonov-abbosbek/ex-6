@@ -4,15 +4,24 @@ import { FcMenu } from "react-icons/fc";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { Dropdown } from "flowbite-react";
 import { HiCog, HiLogout } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
 
+ const  navigate = useNavigate();
+
   const Name = localStorage.getItem("fullName");
 
-  // Determine if the user is on the Settings page
   const isSettingsPage = location.pathname === "/settings";
+
+  const handleSignOut = () => {
+    const token = "token";
+    localStorage.removeItem(token);
+
+    navigate("/login");
+  };
 
   return (
     <>
@@ -32,7 +41,9 @@ const Header = () => {
                 <Dropdown.Item icon={HiCog}>Settings</Dropdown.Item>
               </Link>
             )}
-            <Dropdown.Item icon={HiLogout}>Sign out</Dropdown.Item>
+            <Dropdown.Item icon={HiLogout}>
+              <button onClick={handleSignOut}>Sign out</button>
+            </Dropdown.Item>
           </Dropdown>
         </div>
       </header>

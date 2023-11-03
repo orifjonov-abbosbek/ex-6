@@ -64,10 +64,18 @@ const postAPI = {
 
     const headers = {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "multipart/form-data", // Make sure to set the correct content type for your service creation endpoint
+      "Content-Type": "multipart/form-data",
     };
 
     return api.post("/service", formData, { headers });
+  },
+
+  createXizmat: async (formData) => {
+    return api.post("/user/register", formData);
+  },
+
+  applyForCourse: async (formData) => {
+    return api.post("/user/register", formData);
   },
 };
 

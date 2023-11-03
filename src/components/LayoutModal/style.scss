@@ -1,0 +1,52 @@
+.tab-menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &.active {
+    background-color: #0d6efd;
+    color: #fff;
+  }
+
+ 
+}
+
+.tab-content {
+  margin-top: 20px;
+
+  input[type="file"] {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    min-height: 150px;
+  }
+}
+
+.button-close {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}

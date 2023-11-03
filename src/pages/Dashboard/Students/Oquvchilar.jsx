@@ -3,6 +3,9 @@ import { Breadcrumb } from "flowbite-react";
 import { Table } from "flowbite-react";
 import postAPI from "../../../server/post/index.js";
 import { FaEdit, FaCheck } from "react-icons/fa";
+import { PiFileXlsBold } from "react-icons/pi";
+import * as XLSX from "xlsx";
+
 import "./style.scss";
 
 const Oquvchilar = () => {
@@ -31,6 +34,22 @@ const Oquvchilar = () => {
     return <p>Loading...</p>;
   }
 
+  function exportToExcel(data) {
+    const ws = XLSX.utils.aoa_to_sheet([
+      ["#", "F.I.SH", "Telefon", "Kurs", "Ro'yxatdan o'tgan vaqti"],
+      ...data.map((student, index) => [
+        index + 1,
+        student.fullName,
+        student.phoneNumber,
+        student.courseId.title,
+        student.createdAt.slice(0, 10),
+      ]),
+    ]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "O'quvchilar");
+    XLSX.writeFile(wb, "oquvchilar.xlsx");
+  }
+
   return (
     <>
       <div className="students_wrapper">
@@ -47,10 +66,14 @@ const Oquvchilar = () => {
               <Breadcrumb.Item href="#">O'quvchilar</Breadcrumb.Item>
             </Breadcrumb>
           </div>
-        
         </div>
 
         <div className="table_wrapper">
+          <button className="exel_btn" onClick={() => exportToExcel(students)}>
+            Export to Exel
+            <PiFileXlsBold />
+          </button>
+
           <Table>
             <Table.Head>
               <Table.HeadCell>#</Table.HeadCell>
